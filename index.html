@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Name Art Studio ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Monoton&family=Pacifico&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;500;600;700&family=Sacramento&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="floating-particles" id="particles"></div>
+        <div class="sparkles" id="sparkles"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="title-container">
+                <span class="title-icon">✒️</span>
+                <h1 class="title">Name Art Studio</h1>
+                <span class="title-icon">🎨</span>
+            </div>
+            <p class="subtitle">Create Beautiful Name Art</p>
+            <div class="stars-row">
+                <span class="floating-star">⭐</span>
+                <span class="floating-star">✨</span>
+                <span class="floating-star">💫</span>
+                <span class="floating-star">🌟</span>
+                <span class="floating-star">✨</span>
+                <span class="floating-star">⭐</span>
+            </div>
+        </header>
+
+        <!-- Name Input Section -->
+        <section class="input-section">
+            <div class="input-card">
+                <label class="input-label">Enter Your Name</label>
+                <div class="input-wrapper">
+                    <input type="text" id="nameInput" placeholder="Type your name here..." maxlength="20" class="name-input">
+                    <button class="generate-btn" onclick="generateNameArt()">
+                        <span>✨</span> Generate Art
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Name Art Display -->
+        <section class="art-display-section">
+            <div class="art-card" id="artCard">
+                <div class="art-preview" id="artPreview">
+                    <div class="placeholder-text">
+                        <span>👆</span>
+                        <p>Enter your name above to create beautiful art!</p>
+                    </div>
+                </div>
+                <div class="art-decorations">
+                    <span class="decoration tl">✦</span>
+                    <span class="decoration tr">✦</span>
+                    <span class="decoration bl">✦</span>
+                    <span class="decoration br">✦</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customization Options -->
+        <section class="customize-section">
+            <h2 class="section-title">🎯 Customize Your Art</h2>
+            
+            <div class="customize-panels">
+                <!-- Font Style Panel -->
+                <div class="panel">
+                    <h3 class="panel-title">🖋️ Font Style</h3>
+                    <div class="font-options" id="fontOptions">
+                        <button class="font-btn active" data-font="Dancing Script" onclick="setFont('Dancing Script')">Dancing</button>
+                        <button class="font-btn" data-font="Great Vibes" onclick="setFont('Great Vibes')">Great Vibes</button>
+                        <button class="font-btn" data-font="Pacifico" onclick="setFont('Pacifico')">Pacifico</button>
+                        <button class="font-btn" data-font="Sacramento" onclick="setFont('Sacramento')">Sacramento</button>
+                        <button class="font-btn" data-font="Satisfy" onclick="setFont('Satisfy')">Satisfy</button>
+                        <button class="font-btn" data-font="Playfair Display" onclick="setFont('Playfair Display')">Classic</button>
+                        <button class="font-btn" data-font="Monoton" onclick="setFont('Monoton')">Monoton</button>
+                    </div>
+                </div>
+
+                <!-- Color Theme Panel -->
+                <div class="panel">
+                    <h3 class="panel-title">🌈 Color Theme</h3>
+                    <div class="color-options" id="colorOptions">
+                        <button class="color-btn active" data-theme="romantic" onclick="setColorTheme('romantic')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #ff6b9d, #ff8fa3);"></span>
+                            Romantic
+                        </button>
+                        <button class="color-btn" data-theme="ocean" onclick="setColorTheme('ocean')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #4d96ff, #6bcb77);"></span>
+                            Ocean
+                        </button>
+                        <button class="color-btn" data-theme="sunset" onclick="setColorTheme('sunset')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d);"></span>
+                            Sunset
+                        </button>
+                        <button class="color-btn" data-theme="royal" onclick="setColorTheme('royal')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #9b59b6, #e74c3c);"></span>
+                            Royal
+                        </button>
+                        <button class="color-btn" data-theme="nature" onclick="setColorTheme('nature')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #2ecc71, #3498db);"></span>
+                            Nature
+                        </button>
+                        <button class="color-btn" data-theme="gold" onclick="setColorTheme('gold')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #f39c12, #e74c3c);"></span>
+                            Gold
+                        </button>
+                        <button class="color-btn" data-theme="pastel" onclick="setColorTheme('pastel')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #a8e6cf, #dcedc1);"></span>
+                            Pastel
+                        </button>
+                        <button class="color-btn" data-theme="neon" onclick="setColorTheme('neon')">
+                            <span class="color-preview" style="background: linear-gradient(45deg, #ff00ff, #00ffff);"></span>
+                            Neon
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Background Panel -->
+                <div class="panel">
+                    <h3 class="panel-title">🖼️ Background</h3>
+                    <div class="bg-options" id="bgOptions">
+                        <button class="bg-btn active" data-bg="gradient" onclick="setBackground('gradient')">
+                            <span class="bg-preview" style="background: linear-gradient(135deg, #fff0f5, #ffe4ec);"></span>
+                            Gradient
+                        </button>
+                        <button class="bg-btn" data-bg="solid" onclick="setBackground('solid')">
+                            <span class="bg-preview" style="background: #ffffff;"></span>
+                            Solid
+                        </button>
+                        <button class="bg-btn" data-bg="transparent" onclick="setBackground('transparent')">
+                            <span class="bg-preview" style="background: repeating-linear-gradient(45deg, #eee, #eee 5px, #fff 5px, #fff 10px);"></span>
+                            Transparent
+                        </button>
+                        <button class="bg-btn" data-bg="dots" onclick="setBackground('dots')">
+                            <span class="bg-preview" style="background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 10px 10px;"></span>
+                            Dots
+                        </button>
+                        <button class="bg-btn" data-bg="stars" onclick="setBackground('stars')">
+                            <span class="bg-preview" style="background: #1a1a2e;"></span>
+                            Stars
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Size Panel -->
+                <div class="panel">
+                    <h3 class="panel-title">📏 Text Size</h3>
+                    <div class="size-control">
+                        <input type="range" id="textSize" min="24" max="120" value="60" class="size-slider" oninput="updateTextSize(this.value)">
+                        <span class="size-value" id="sizeValue">60px</span>
+                    </div>
+                </div>
+
+                <!-- Effects Panel -->
+                <div class="panel">
+                    <h3 class="panel-title">✨ Effects</h3>
+                    <div class="effects-options">
+                        <label class="effect-checkbox">
+                            <input type="checkbox" id="shadowEffect" onchange="updateEffects()">
+                            <span class="checkbox-custom"></span>
+                            Drop Shadow
+                        </label>
+                        <label class="effect-checkbox">
+                            <input type="checkbox" id="glowEffect" onchange="updateEffects()">
+                            <span class="checkbox-custom"></span>
+                            Glow Effect
+                        </label>
+                        <label class="effect-checkbox">
+                            <input type="checkbox" id="gradientText" checked onchange="updateEffects()">
+                            <span class="checkbox-custom"></span>
+                            Gradient Text
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="actions-section">
+            <button class="action-button download-btn" onclick="downloadArt()">
+                <span>💾</span> Download Art
+            </button>
+            <button class="action-button copy-btn" onclick="copyToClipboard()">
+                <span>📋</span> Copy to Clipboard
+            </button>
+            <button class="action-button share-btn" onclick="shareArt()">
+                <span>📱</span> Share
+            </button>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">🖼️ Name Art Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" onclick="loadFromGallery('Princess')">
+                    <span class="gallery-name">Princess</span>
+                </div>
+                <div class="gallery-item" onclick="loadFromGallery('King')">
+                    <span class="gallery-name">King</span>
+                </div>
+                <div class="gallery-item" onclick="loadFromGallery('Love')">
+                    <span class="gallery-name">Love</span>
+                </div>
+                <div class="gallery-item" onclick="loadFromGallery('Mansi')">
+                    <span class="gallery-name">Mansi</span>
+                </div>
+                <div class="gallery-item" onclick="loadFromGallery('Friends')">
+                    <span class="gallery-name">Friends</span>
+                </div>
+                <div class="gallery-item" onclick="loadFromGallery('Baby')">
+                    <span class="gallery-name">Baby</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>✨ Created with love by Mansi ✨</p>
+            <div class="footer-hearts">
+                <span>💖</span><span>💕</span><span>💗</span><span>💝</span><span>💕</span><span>💖</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
